@@ -2,7 +2,7 @@
 export interface ContinentType{
     name:string;
     code:string;
-    countries:[CountryType]
+    countries?:[CountryType]
 
 }
 

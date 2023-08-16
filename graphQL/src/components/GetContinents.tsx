@@ -8,7 +8,7 @@ const GetContinents = () => {
   const [continents, setContinents] = useState<ContinentType[]>([]);
 
   useEffect(() => {
-    setContinents(data.continents);
+    setContinents(data?.continents);
   }, []);
 
   console.log("conts", continents);
@@ -21,10 +21,18 @@ const GetContinents = () => {
       <div>
         <h1>List of Continents</h1>
         <ul>
-          {continents?.map((conts) => (<>
-            <li>{conts.name}</li><br/>
-            <li>{conts.countries.map((country)=><li>{country.name}</li>)}</li><br/><br/>
-          </>
+          {continents?.map((conts) => (
+            <>
+              <li key={conts.code}>{conts?.name}</li>
+              <br />
+              <li key={conts.name}>
+                {conts?.countries?.map((country) => (
+                  <li key={country.phone}>{country.name}</li>
+                ))}
+              </li>
+              <br />
+              <br />
+            </>
           ))}
         </ul>
       </div>
