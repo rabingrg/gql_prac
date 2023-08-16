@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import "./index.css";
+// import "./index.css";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import GetContinents from "./components/GetContinents.tsx";
 
 const client = new ApolloClient({
   uri:"https://countries.trevorblades.com/graphql",
@@ -12,7 +13,8 @@ const client = new ApolloClient({
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <ApolloProvider client={client}>
     <React.StrictMode>
-      <App />
+      {/* <App /> */}
+      <GetContinents/>
     </React.StrictMode>
   </ApolloProvider>
 );
