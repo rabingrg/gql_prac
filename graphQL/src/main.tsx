@@ -5,9 +5,10 @@ import ReactDOM from "react-dom/client";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import GetContinents from "./components/GetContinents.tsx";
 import PostContinents from "./components/PostContinents.tsx";
+import Games from "./components/Games.tsx";
 
 const client = new ApolloClient({
-  uri:"https://countries.trevorblades.com/graphql",
+  uri:"http://localhost:4000/",
   cache: new InMemoryCache()
 });
 
@@ -15,8 +16,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <ApolloProvider client={client}>
     <React.StrictMode>
       {/* <App /> */}
-     <GetContinents/>
+     {/* <GetContinents/> */}
      <PostContinents/>
+     <Games/>
     </React.StrictMode>
   </ApolloProvider>
 );

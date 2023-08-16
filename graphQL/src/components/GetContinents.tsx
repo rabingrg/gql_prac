@@ -9,7 +9,7 @@ const GetContinents = () => {
 
   useEffect(() => {
     setContinents(data?.continents);
-  }, []);
+  }, [2000]);
 
   console.log("conts", continents);
 

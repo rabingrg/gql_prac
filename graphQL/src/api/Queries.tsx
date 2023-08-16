@@ -12,3 +12,13 @@ export const GET_CONTINENTS = gql`
     }
   }
 `;
+
+export const GET_GAMES = gql`
+  query getGames {
+    games {
+      id
+      platform
+      title
+    }
+  }
+`;
