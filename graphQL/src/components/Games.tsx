@@ -7,12 +7,16 @@ const Games = () => {
   const { data, loading, error } = useQuery(GET_GAMES);
   const [gamId, setGamId] = useState<number>();
   const [games, setGames] = useState<Game[]>([]);
-  const {data:gameById , loading:gameByIdLoading, error:gameByIdError} = useQuery(GET_GAME_BY_ID,{
-    variables:{
-        gameId:gamId
+  const {
+    data: gameById,
+    loading: gameByIdLoading,
+    error: gameByIdError,
+  } = useQuery(GET_GAME_BY_ID, {
+    variables: {
+      gameId: gamId,
     },
-    skip: !gamId
-  })
+    skip: !gamId,
+  });
 
   useEffect(() => {
     setGames(data?.games);
@@ -23,8 +27,7 @@ const Games = () => {
 
   console.log("games", games);
   console.log("gameId", gamId);
-  console.log("gameById",gameById);
-  
+  console.log("gameById", gameById);
 
   return (
     <div>
@@ -38,7 +41,13 @@ const Games = () => {
       </ul>
       {gameByIdLoading && <p>gamebyid loading...</p>}
       {gameByIdError && <p>{`Error :${gameByIdError}`}</p>}
-      {gameById && <h1>{gameById?.game?.title}</h1>}
+      {gameById && (
+        <div>
+          <h1>{gameById?.game?.title}</h1>
+          <p>Platforms</p>
+          <ul>{gameById?.game?.platform.map((platform:string[])=><li>{platform}</li>)}</ul>
+        </div>
+      )}
     </div>
   );
 };
