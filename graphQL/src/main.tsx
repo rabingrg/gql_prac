@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 // import App from "./App.tsx";
 // import "./index.css";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
-import GetContinents from "./components/GetContinents.tsx";
+import GetContinents from "./components/Continents.tsx";
 import PostContinents from "./components/PostContinents.tsx";
 import Games from "./components/Games.tsx";
 

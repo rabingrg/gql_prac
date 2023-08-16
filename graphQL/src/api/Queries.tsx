@@ -22,3 +22,12 @@ export const GET_GAMES = gql`
     }
   }
 `;
+
+export const GET_GAME_BY_ID = gql`
+query getGameById($gameId: ID!) {
+  game(id: $gameId) {
+    title
+    platform
+  }
+}
+`
