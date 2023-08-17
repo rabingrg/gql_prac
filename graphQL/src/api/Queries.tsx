@@ -31,3 +31,11 @@ query getGameById($gameId: ID!) {
   }
 }
 `
+export const GET_AUTHORS = gql`
+query Authors {
+  authors {
+    id
+    name
+    verified
+  }
+}`

@@ -45,7 +45,7 @@ const Games = () => {
         <div>
           <h1>{gameById?.game?.title}</h1>
           <p>Platforms</p>
-          <ul>{gameById?.game?.platform.map((platform:string[])=><li>{platform}</li>)}</ul>
+          <ul>{gameById?.game?.platform.map((platform:string[],index:number)=><li key={index}>{platform}</li>)}</ul>
         </div>
       )}
     </div>
