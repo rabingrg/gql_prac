@@ -39,3 +39,11 @@ query Authors {
     verified
   }
 }`
+
+export const GET_AUTHOR_BY_ID = gql`
+query GetAuthorById($authorId: ID!){
+  author(id: $authorId) {
+    name
+  }
+}
+`
