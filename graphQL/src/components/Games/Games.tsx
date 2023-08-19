@@ -35,7 +35,7 @@ const Games = () => {
           </li>
         ))}
       </ol>
-      <button onClick={()=>navigate('addGames')}>Go to Add Games</button>
+      <button onClick={()=>navigate('addGame')}>Go to Add Games</button>
 
       {gameByIdLoading && <p>gamebyid loading...</p>}
       {gameByIdError && <p>{`Error :${gameByIdError}`}</p>}

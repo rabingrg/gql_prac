@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
-import { GET_CONTINENTS } from "../api/Queries";
+import { GET_CONTINENTS } from "../../api/Queries";
 import { useEffect, useState } from "react";
-import { ContinentType } from "../types/ContinentType";
+import { ContinentType } from "../../types/ContinentType";
 
 const GetContinents = () => {
   const { data, error, loading } = useQuery(GET_CONTINENTS);

@@ -1,5 +1,5 @@
 export interface Author{
-    id: string;
-    name: string;
-    verified: boolean;
+    id?: string;
+    name?: string;
+    verified?: boolean | string;
 }
