@@ -1,11 +1,14 @@
 import { gql } from "@apollo/client";
 
-export const CREATE_USERS = gql`
-  mutation createGame($name: String!, $code: String!) {
-    createContinet(name: $name, code: $code) {
+export const ADD_GAME = gql`
+mutation AddGame($game: GameInput!) {
+  addGame(game: $game) {
+    message
+    success
+    newlyAddedData {
       id
-      name
-      code
+      platform
+      title
     }
   }
-`;
+}`

@@ -1,17 +1,12 @@
 import { useQuery } from "@apollo/client";
-import React, { useEffect, useState } from "react";
-import { GET_AUTHORS } from "../api/Queries";
-import { Author } from "../types/AuthorType";
+import { GET_AUTHORS } from "../../api/Queries";
+import { Author } from "../../types/AuthorType";
 
 const Authors = () => {
   const { data, loading, error } = useQuery(GET_AUTHORS);
-  const [getAuthors, setAuthors] = useState<Author[]>([]);
+  const authors = data?.authors;
 
-  useEffect(() => {
-    setAuthors(data?.authors);
-  }, [data]);
-
-  console.log("getAuthors", getAuthors);
+  console.log("getAuthors", authors);
   if (loading) return "Authors loading...";
   if (error) return `Errors in Author:${error}`;
 
@@ -19,7 +14,7 @@ const Authors = () => {
     <div>
       <h1>Authors</h1>
       <ul>
-        {getAuthors.map((auth) => (
+        {authors.map((auth:Author) => (
           <li key={auth.id}>{auth.name}</li>
         ))}
       </ul>

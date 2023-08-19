@@ -1,12 +1,16 @@
 import { useQuery } from "@apollo/client";
-import { GET_GAMES, GET_GAME_BY_ID } from "../api/Queries";
-import { useEffect, useState } from "react";
-import { Game } from "../types/GameType";
+import { GET_GAMES, GET_GAME_BY_ID } from "../../api/Queries";
+import { useState } from "react";
+import { Game } from "../../types/GameType";
+import { useNavigate } from "react-router-dom";
 
 const Games = () => {
   const { data, loading, error } = useQuery(GET_GAMES);
+  const games = data?.games;
   const [gamId, setGamId] = useState<number>();
-  const [games, setGames] = useState<Game[]>([]);
+
+  const navigate = useNavigate();
+
   const {
     data: gameById,
     loading: gameByIdLoading,
@@ -18,34 +22,34 @@ const Games = () => {
     skip: !gamId,
   });
 
-  useEffect(() => {
-    setGames(data?.games);
-  }, [games]);
-
   if (loading) return `Loading..`;
   if (error) return `Error :${error}`;
-
-  console.log("games", games);
-  console.log("gameId", gamId);
-  console.log("gameById", gameById);
 
   return (
     <div>
       <h1>List of Games</h1>
-      <ul>
-        {games.map((game) => (
+      <ol>
+        {games.map((game: Game) => (
           <li key={game.id} onClick={() => setGamId(game.id)}>
             {game.title}
           </li>
         ))}
-      </ul>
+      </ol>
+      <button onClick={()=>navigate('addGames')}>Go to Add Games</button>
+
       {gameByIdLoading && <p>gamebyid loading...</p>}
       {gameByIdError && <p>{`Error :${gameByIdError}`}</p>}
       {gameById && (
         <div>
           <h1>{gameById?.game?.title}</h1>
           <p>Platforms</p>
-          <ul>{gameById?.game?.platform.map((platform:string[],index:number)=><li key={index}>{platform}</li>)}</ul>
+          <ul>
+            {gameById?.game?.platform.map(
+              (platform: string[], index: number) => (
+                <li key={index}>{platform}</li>
+              )
+            )}
+          </ul>
         </div>
       )}
     </div>

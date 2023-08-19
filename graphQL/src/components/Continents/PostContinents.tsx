@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ContinentType } from "../types/ContinentType";
+import { ContinentType } from "../../types/ContinentType";
 // import { ContinentType } from "../types/ContinentType";
 
 const PostContinents = () => {

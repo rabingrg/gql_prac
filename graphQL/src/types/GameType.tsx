@@ -1,5 +1,5 @@
 export interface Game{
-    id: number;
+    id?: number;
     title: string;
     platform: string[];
 }
