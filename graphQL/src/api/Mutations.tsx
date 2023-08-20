@@ -16,6 +16,16 @@ export const ADD_AUTHOR = gql`
   }
 `;
 
+export const UPDATE_GAME = gql`
+  mutation Mutation($updateGameId: ID!, $upGame: UpdateGameInput!) {
+    updateGame(id: $updateGameId, upGame: $upGame) {
+      id
+      title
+      platform
+    }
+  }
+`;
+
 export const DEL_GAME = gql`
   mutation DeleteGame($deleteGameId: ID!) {
     deleteGame(id: $deleteGameId) {

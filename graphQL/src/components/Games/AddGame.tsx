@@ -27,7 +27,7 @@ const AddGame = () => {
       console.log(`Error in submitting ${err}`);
     }
     reset();
-    console.log("whole data", wholeData);
+    // console.log("whole data", wholeData);
   };
 
   if (loading) return "Submitting....";

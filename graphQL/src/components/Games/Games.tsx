@@ -7,7 +7,7 @@ import { DEL_GAME } from "../../api/Mutations";
 
 const Games = () => {
   const { data, loading, error } = useQuery(GET_GAMES);
-  const [games, setGames] = useState<Game[]>();
+  const [games, setGames] = useState<Game[]>([]);
   const [deleteGame] = useMutation(DEL_GAME);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Games = () => {
     }
   }, [data]);
 
-  const [gamId, setGamId] = useState<number>();
+  // const [gamId, setGamId] = useState<number>();
   console.log("org games",games);
 
   const navigate = useNavigate();
@@ -30,16 +30,16 @@ const Games = () => {
     setGames(data?.deleteGame?.updatedGames);
   };
 
-  const {
-    data: gameById,
-    loading: gameByIdLoading,
-    error: gameByIdError,
-  } = useQuery(GET_GAME_BY_ID, {
-    variables: {
-      gameId: gamId,
-    },
-    skip: !gamId,
-  });
+  // const {
+  //   data: gameById,
+  //   loading: gameByIdLoading,
+  //   error: gameByIdError,
+  // } = useQuery(GET_GAME_BY_ID, {
+  //   variables: {
+  //     gameId: gamId,
+  //   },
+  //   skip: !gamId,
+  // });
 
   if (loading) return `Loading..`;
   if (error) return `Error :${error}`;
@@ -50,10 +50,13 @@ const Games = () => {
       <ol>
         {games?.map((game: Game) => (
           <>
-            <li key={game.id} onClick={() => setGamId(game.id)}>
+            <li key={game.id} >
               {game.title}
             </li>
             <br />
+            <button onClick={() => navigate(`upateGame/${game.id}`)}>
+              Edit
+            </button>
             <button onClick={() => handleDelete(Number(game.id))}>
               Delete
             </button>
@@ -64,7 +67,7 @@ const Games = () => {
       </ol>
       <button onClick={() => navigate("addGame")}>Go to Add Games</button>
 
-      {gameByIdLoading && <p>gamebyid loading...</p>}
+      {/* {gameByIdLoading && <p>gamebyid loading...</p>}
       {gameByIdError && <p>{`Error :${gameByIdError}`}</p>}
       {gameById && (
         <div>
@@ -78,7 +81,7 @@ const Games = () => {
             )}
           </ul>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
